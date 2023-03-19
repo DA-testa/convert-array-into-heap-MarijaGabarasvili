@@ -9,9 +9,9 @@ def build_heap(data):
     for i in range(n//2, -1, -1):
       a=i
       while True:
-        if (2*i+1<=n-1) and (data[2*i+1]<data[a]):
+        if (2*i+1<n) and (data[2*i+1]<data[a]):
           a=2*i+1
-        if (2*i+2<=n-1) and (data[2*i]<data[a]):
+        if (2*i+2<n) and (data[2*i]<data[a]):
           a=2*i+2
         if i != a:
           swaps.append((i, a))
@@ -40,7 +40,7 @@ def main():
           littleshit = True
   
       if("F" in wait):
-          name = "test/" + input()
+          name = "tests/" + input()
           if not("a" in name):
               littleshit = True
               with open(name) as file:
