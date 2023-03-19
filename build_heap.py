@@ -29,6 +29,7 @@ def build_heap(data):
             i=c;
         else:
             i=c
+            break;
         
 
 
