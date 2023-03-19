@@ -1,40 +1,36 @@
 # python3
-def min_heap(i, swaps, data, n):
-    a=i
-    if (2*i+1<n) and (data[2*i+1]<data[a]):
-        a=2*i+1
-    if (2*i+2<n) and (data[2*i]<data[a]):
-        a=2*i+2
-    if i != a:
-        swaps.append((i, a))
-        b = data[a]
-        data[a] = data[i]
-        data[i]=b
-        return a
-    else:
-        return i
-
-
 
 def build_heap(data):
     swaps = []
-
     n = len(data)
 
-    for i in range(n//2, -1, -1):
-      
+    for i in range (n//2, -1, -1):
       while True:
-        c = min_heap(i, swaps,data,n)
-        if c!=i:
-            i=c;
+        b = makelifeeasier(data, i, swaps,n)
+        if b != i:
+          i=b
         else:
-            i=c
-            break;
-        
-
-
-    
+          i=b
+          break
+          
     return swaps
+
+
+def makelifeeasier(data, i, swaps, n):
+  a=i
+  leftch = 2*i + 1
+  rightch = 2*i + 2
+  if(leftch<n) and (data[leftch]<data[a]):
+    a = leftch
+  if(rightch<n) and (data[rightch]<data[a]):
+    a = rightch
+  if (i!= a):
+    swaps.append((i, a))
+    data[a], data[i] = data[i], data[a]
+    return a
+  else:
+    return i
+
 
 
 def main():
